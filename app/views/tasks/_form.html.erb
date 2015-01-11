@@ -13,10 +13,13 @@
       </ul>
     </div>
   <% end %>
- 
+
+<p> <%= @task.user.name %> </p>
+
+
   <p>
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title %><br>
   </p>
  
   <p>

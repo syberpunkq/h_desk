@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   http_basic_authenticate_with name: "admin", password: "111", except: [:index, :show]
   
   def index
-    @tasks = Task.all    
+    @tasks = Task.includes(:user)    
     
   end
   
@@ -26,7 +26,7 @@ def new
 end
 
 def edit
-  @task = Task.find(params[:id])    
+  @task = Task.includes(:user).find(params[:id])    
 end
   
 def create
