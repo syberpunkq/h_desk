@@ -14,7 +14,10 @@
   <body>
     <div class="row">
       <div class="12-columns">
-<%= render "layouts/menu" %>
+        <%= render "layouts/menu" %>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, id: "flash_#{name}" %>
+        <% end %>
     <%= yield %>
     <%= javascript_include_tag "application" %>
       </div>
