@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :is_user?, except: :new
   def new 
     @user = User.new
   end
@@ -23,5 +24,5 @@ end
 
 private
 def user_params
-  params.require(:user).permit(:name, :login, :password, :email, :password_confirmation)
+  params.require(:user).permit(:name, :login, :password, :email, :password_confirmation, :role)
   end

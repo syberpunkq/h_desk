@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   
-  http_basic_authenticate_with name: "admin", password: "111", only: :destroy
+  #http_basic_authenticate_with name: "admin", password: "111", only: :destroy
   
   def create
     @task = Task.find(params[:task_id])
