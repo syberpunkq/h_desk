@@ -10,12 +10,19 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
   
-  def is_user?
-  	redirect_to login_url, alert: "Not authorized" if current_user.nil?
-  end
+  # def is_user?
+  # 	redirect_to login_url, alert: "Not authorized" if current_user.nil?
+  # end
+  
+  # def is_admin?
+  #   redirect_to root_url, alert: "Not admin" if current_user.role != 1
+  # end
   
   def is_admin?
-    redirect_to root_url, alert: "Not admin" if current_user.role != 0
+    User.find(session[:user_id]).role == 1
   end
+  helper_method :is_admin?
+  
+  
   
 end
