@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   
   #http_basic_authenticate_with name: "admin", password: "111", except: [:index, :show]
-  before_filter :is_user?#, only: [:edit, :update]
+  #before_filter :is_user?#, only: [:edit, :update]
   #before_filter :is_admin?, only: [:edit, :update]
   
   def index
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
     @task.user = @current_user
 
     if @task.save
-      redirect_to @task
+      redirect_to tasks_path #@task
     else
       render 'new'
     end

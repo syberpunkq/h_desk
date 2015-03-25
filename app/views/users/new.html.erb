@@ -33,7 +33,13 @@
   <%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %>
 </div>
+<div class="field">
+  <%= f.radio_button :role, 2, :checked => true %> 
+  <%= label :role_user, 'User' %>
+  <%= f.radio_button :role, 1 %>
+  <%= label :role_admin, 'Admin' %>
 
+</div>
 <div class="actions">
   <%= f.submit %>
 </div>
