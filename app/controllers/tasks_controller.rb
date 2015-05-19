@@ -1,14 +1,12 @@
 class TasksController < ApplicationController
   
-  #http_basic_authenticate_with name: "admin", password: "111", except: [:index, :show]
-  #before_filter :is_user?#, only: [:edit, :update]
-  #before_filter :is_admin?, only: [:edit, :update]
+  before_filter :if_user, only: [:edit, :update]
+  before_filter :if_admin, only: [:edit, :update]
   
   def index
     @tasks = Task.includes(:user)    
     
   end
-  
   
   def show
     @task = Task.find(params[:id])
@@ -16,7 +14,7 @@ class TasksController < ApplicationController
   
   def new
     @task = Task.new
-    @task.user = @current_user
+    @task.user = current_user
   end
 
   def edit
@@ -25,7 +23,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.user = @current_user
+    @task.user = current_user
 
     if @task.save
       redirect_to tasks_path #@task

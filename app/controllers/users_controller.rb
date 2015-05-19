@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  #before_filter :is_user?, except: :new
-  
+
+  before_action :if_admin
   #index, show, new, edit, create, update и destroy isnecud
     
   def index
@@ -15,10 +15,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def edit
+     @user = User.find(params[:id])
+  end
+  
   def create
     @user = User.new(user_params)
     if @user.save
-      #redirect_to @user
       session[:user_id] = @user.id
       redirect_to root_url, notice: "Thank you for signing up"
     else
@@ -35,10 +38,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    
-  end
-  
   def destroy
   
   end
