@@ -1,13 +1,9 @@
 class TasksController < ApplicationController
   
-<<<<<<< HEAD
+
   before_filter :if_user, only: [:edit, :update]
   before_filter :if_admin, only: [:edit, :update]
-=======
-  #http_basic_authenticate_with name: "admin", password: "111", except: [:index, :show]
-  #before_filter :is_user?#, only: [:edit, :update]
-  #before_filter :is_admin?, only: [:edit, :update]
->>>>>>> 84a4522e729e2e5dc8ac21d43017fa0e1d703360
+
   
   def index
     @tasks = Task.includes(:user)    
