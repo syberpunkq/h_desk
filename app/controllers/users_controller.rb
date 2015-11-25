@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :if_admin
+  #before_action :if_admin
   #index, show, new, edit, create, update и destroy isnecud
     
   def index
