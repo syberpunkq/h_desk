@@ -8,16 +8,24 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
+
       <% if current_user && is_admin? %> 
-      <li><%= link_to 'Пользователи', users_path %></li>
+      <li> <!-- class="active" for active menu item -->
+        <%= link_to 'Пользователи', users_path %>
+      </li>
       <% end %>
+
       <li><%= link_to 'База знаний', articles_path %></li>
-      <li class="active"><%= link_to 'Заявки', tasks_path %></li>
+
+      <li>
+        <%= link_to 'Заявки', tasks_path %>
+      </li>
+
       <li class="has-dropdown">
         <a href="#">Отчеты</a>
         <ul class="dropdown">
           <li><a href="#">Отчет за месяц</a></li>
-          <li class="active"><a href="#">Незакрытые заявки</a></li>
+          <li><a href="#">Незакрытые заявки</a></li>
         </ul>
       </li>
       <% if current_user %>

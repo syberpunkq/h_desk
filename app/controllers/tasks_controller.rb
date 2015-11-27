@@ -1,7 +1,9 @@
 class TasksController < ApplicationController
   
+
   before_filter :if_user, only: [:edit, :update]
   before_filter :if_admin, only: [:edit, :update]
+
   
   def index
     @tasks = Task.includes(:user)    
