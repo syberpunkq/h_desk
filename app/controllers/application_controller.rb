@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
-  
   helper_method :current_user
   
 
@@ -20,13 +19,24 @@ class ApplicationController < ActionController::Base
   def if_admin
     redirect_to root_url, alert: "Not admin" if current_user.role != 1
   end
+
+  def if_current_user
+    ids = current_user.id.to_s + " | " + params[:id]
+    redirect_to root_url, alert: "User have no permissons #{ids}" if current_user.id!=(params[:id])
+  end
   
-  def is_admin?
+  def admin?
     User.find(session[:user_id]).role == 1
   end
-  helper_method :is_admin?
+  helper_method :admin?
 
-  
+  rescue_from ActiveRecord::RecordNotFound, :with => :error_not_found
+  rescue_from AbstractController::ActionNotFound, :with => :error_not_found
+  rescue_from ActionView::MissingTemplate, :with => :error_not_found
+
+  def error_not_found
+  render :status => 404, :template => 'errors/not_found', :layout => 'errors'
+  end
   
   
 end

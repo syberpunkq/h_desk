@@ -9,7 +9,7 @@
     <!-- Right Nav Section -->
     <ul class="right">
 
-      <% if current_user && is_admin? %> 
+      <% if current_user && admin? %> 
       <li> <!-- class="active" for active menu item -->
         <%= link_to 'Пользователи', users_path %>
       </li>
