@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'errors/not_found'
+
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'tasks#index'
+  match "*path", via: [:get, :post], :to => "errors#not_found"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

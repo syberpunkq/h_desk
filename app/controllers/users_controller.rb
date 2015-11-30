@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
-  before_action :if_admin, only: [:index, :show]
+
+  before_action :if_user
+  before_action :if_admin, only: [:index, :destroy]
+  before_action :if_current_user, only: [:show, :edit, :update]
   #index, show, new, edit, create, update и destroy isnecud
     
   def index

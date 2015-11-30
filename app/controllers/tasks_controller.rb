@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   
 
-  before_filter :if_user, only: [:edit, :update]
+  before_filter :if_user, only: [:edit, :update, :show, :new, :edit, :destroy, :index]
   before_filter :if_admin, only: [:edit, :update]
 
   
