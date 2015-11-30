@@ -9,11 +9,11 @@
     <!-- Right Nav Section -->
     <ul class="right">
 
-      <% if current_user && is_admin? %> 
+
       <li> <!-- class="active" for active menu item -->
-        <%= link_to 'Пользователи', users_path %>
+        <%= link_to 'Пользователи', users_path if admin? %>
       </li>
-      <% end %>
+
 
       <li><%= link_to 'База знаний', articles_path %></li>
 

@@ -18,13 +18,13 @@ class ApplicationController < ActionController::Base
 
   
   def if_admin
-    redirect_to root_url, alert: "Not admin" if current_user.role != 1
+    redirect_to root_url, alert: "Not admin" if current_user.nil? || current_user.role != 1
   end
   
-  def is_admin?
-    User.find(session[:user_id]).role == 1
+  def admin?
+    !current_user.nil? && User.find(session[:user_id]).role == 1
   end
-  helper_method :is_admin?
+  helper_method :admin?
 
   
   
