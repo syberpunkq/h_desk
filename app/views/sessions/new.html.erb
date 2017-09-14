@@ -1,15 +1,23 @@
 <h1>Log In</h1>
-admin@mail.rus 123
-user@mail.rus 123
-
-<%= form_tag sessions_path do %>
-	<div class="field"><br />
-	<%= label_tag :email %>
-	<%= text_field_tag :email, params[:email] %>
-	</div>
-	<div class="field"><br />
-	<%= label_tag :password %>
-	<%= text_field_tag :password %>
-	</div>
-	<div class="actions"><%= submit_tag "Log In" %></div>
+<% if Rails.env.development? %>
+	<%= form_tag sessions_path do %>
+		<%= label_tag :login %>
+		<%= text_field_tag :login %>
 	<% end %>
+<% else %>
+	<%= form_tag sessions_path do %>
+		<p>admin@mail.rus 123</p>
+		<p>user@mail.rus 123</p>
+		<div class="field"><br />
+			<%= label_tag :email %>
+			<%= text_field_tag :email, params[:email] %>
+		</div>
+		<div class="field"><br />
+			<%= label_tag :password %>
+			<%= text_field_tag :password %>
+		</div>
+		<div class="actions">
+			<%= submit_tag "Log In" %>
+		</div>
+	<% end %>
+<% end %>
