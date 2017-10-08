@@ -1,0 +1,25 @@
+= link_to 'Подать заявку', new_task_path, class: "button small"
+table
+  tr
+    th
+      | Title
+    th
+      | Text
+    th
+      | User
+  - @tasks.each do |task|
+    tr
+      td
+        = task.title
+      td
+        = task.text
+      td
+        = task.user.name
+      td
+        = link_to 'Show', task_path(task)
+      td
+        = link_to 'Edit', edit_task_path(task)
+      td
+        = link_to 'Destroy', task_path(task),
+          method: :delete,
+          data: { confirm: 'Are you sure?' }

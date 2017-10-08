@@ -1,0 +1,22 @@
+h1
+  | Log In
+- if Rails.env.development?
+  = form_tag sessions_path do
+    = label_tag :login
+    = text_field_tag :login
+- else
+  = form_tag sessions_path do
+    p
+      | admin@mail.rus 123
+    p
+      | user@mail.rus 123
+    .field
+      br
+      = label_tag :email
+      = text_field_tag :email, params[:email]
+    .field
+      br
+      = label_tag :password
+      = text_field_tag :password
+    .actions
+      = submit_tag "Log In"

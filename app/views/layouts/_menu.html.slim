@@ -1,0 +1,35 @@
+nav.top-bar[data-topbar role="navigation"]
+  ul.title-area
+    li.name
+      h1
+        a[href="#"]
+          | h_desk
+  section.top-bar-section
+    ul.right
+      li
+        = link_to 'Пользователи', users_path if admin?
+      li
+        = link_to 'База знаний', articles_path
+      li
+        = link_to 'Заявки', tasks_path
+      li.has-dropdown
+        a[href="#"]
+          | Отчеты
+        ul.dropdown
+          li
+            a[href="#"]
+              | Отчет за месяц
+          li
+            a[href="#"]
+              | Незакрытые заявки
+      - if current_user
+        li[style="color: #008cba; margin-top: 13px; font-weight: bold; font-size: 0.8125rem;"]
+          | Logged as
+          = current_user.login
+        li
+          = link_to 'Log out', logout_path
+      - else
+        li
+          = link_to 'Sign Up', signup_path
+        li
+          = link_to 'Log In', login_path
